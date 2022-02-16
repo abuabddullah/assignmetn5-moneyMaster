@@ -1,3 +1,4 @@
+// necessearay variables for calculate
 let input4IncomeTag = document.getElementById('input4Income');
 
 let input4FoodTag = document.getElementById('input4Food');
@@ -10,6 +11,7 @@ let totalExpensesTag = document.getElementById('totalExpenses');
 let balance1Tag = document.getElementById('balance1');
 
 
+// function to calculate
 calculateBtn.addEventListener("click", function () {
     let totalIncome = parseFloat(input4IncomeTag.value);
 
@@ -38,6 +40,12 @@ calculateBtn.addEventListener("click", function () {
 })
 
 
+
+
+
+
+
+// necessery variables for savings
 let input4SaveTag = document.getElementById('input4Save');
 
 let saveBtn = document.getElementById('saveBtn');
@@ -46,6 +54,8 @@ let saveBtn = document.getElementById('saveBtn');
 let ultimateSavingsTag = document.getElementById('ultimateSavings');
 let ultimateBalanceTag = document.getElementById('ultimateBalance');
 
+
+// function for savings
 saveBtn.addEventListener('click', function () {
     let totalIncome = parseFloat(input4IncomeTag.value);
 
@@ -53,8 +63,6 @@ saveBtn.addEventListener('click', function () {
     let savingPercetnage = parseFloat(input4SaveTag.value);
     let savingAmmount = totalIncome * (savingPercetnage / 100);
 
-
-    // console.log(totalIncome);
 
     if (savingAmmount <= balance1Tag.innerHTML && savingAmmount >= 0) {
         ultimateSavingsTag.innerHTML = savingAmmount.toFixed(2);
