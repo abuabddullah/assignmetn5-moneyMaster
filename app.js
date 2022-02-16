@@ -25,27 +25,10 @@ calculateBtn.addEventListener("click", function () {
             totalExpensesTag.innerHTML = totalCosts.toFixed(2);
             balance1Tag.innerHTML = (totalIncome - totalCosts).toFixed(2);
         } else {
-            alert("(1)No Negative value or Alphabetic value or Empty value applicable for Input fields. \n \n(2)Total Expenses can not be higher than total Income \n \n All fields must be filled as per requirements")
-
-            totalExpensesTag.style.color = "red";
-            balance1Tag.style.color = "red";
-
-            totalExpensesTag.innerHTML = "Invalid Input";
-            balance1Tag.innerHTML = "Invalid Input";
-
+            showError(totalExpensesTag, balance1Tag, false)
         }
-
-
-
     } else {
-        alert("(1)No Negative value or Alphabetic value or Empty value applicable for Input fields. \n \n(2)Total Expenses can not be higher than total Income \n \n All fields must be filled as per requirements")
-
-        totalExpensesTag.style.color = "red";
-        balance1Tag.style.color = "red";
-
-        totalExpensesTag.innerHTML = "Invalid Input";
-        balance1Tag.innerHTML = "Invalid Input";
-
+        showError(totalExpensesTag, balance1Tag, false)
     }
 
     input4FoodTag.value = '';
@@ -79,19 +62,31 @@ saveBtn.addEventListener('click', function () {
         ultimateBalanceTag.innerHTML = (balance1Tag.innerHTML - savingAmmount).toFixed(2);
 
     } else {
-        alert("(1)No Negative value or Alphabetic value or Empty value applicable for Input fields. \n \n(2) Balance should be valid \n \n(3)Total Savings can not be higher than Balance \n \n All fields must be filled as per requirements")
-
-        ultimateSavingsTag.style.color = "red";
-        ultimateBalanceTag.style.color = "red";
-
-        ultimateSavingsTag.innerHTML = "Invalid Input";
-        ultimateBalanceTag.innerHTML = "Invalid Input";
-
+        showError(ultimateSavingsTag, ultimateBalanceTag, true)
     }
-
 
     input4IncomeTag.value = '';
     input4SaveTag.value = '';
 
 
 })
+
+// error handleing function
+function showError(tag1, tag2, isSave) {
+
+
+    if (isSave) {
+        alert("(1)No Negative value or Alphabetic value or Empty value applicable for Input fields. \n \n(2) Balance should be valid \n \n(3)Total Savings can not be higher than Balance \n \n All fields must be filled as per requirements")
+    } else {
+
+        alert("(1)No Negative value or Alphabetic value or Empty value applicable for Input fields. \n \n(2)Total Expenses can not be higher than total Income \n \n All fields must be filled as per requirements")
+    }
+
+
+
+    tag1.style.color = "red";
+    tag2.style.color = "red";
+
+    tag1.innerHTML = "Invalid Input";
+    tag2.innerHTML = "Invalid Input";
+}
