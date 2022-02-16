@@ -43,9 +43,9 @@
                     <section class="expenses">
                         <h3 class="text-center m-5">Expenses</h3>
                         <div class="mb-3 row">
-                            <label for="input4Expenses" class="col-sm-2 col-form-label me-5 fw-bold">Food</label>
+                            <label for="input4Food" class="col-sm-2 col-form-label me-5 fw-bold">Food</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input4Expenses" value="3000">
+                                <input type="text" class="form-control" id="input4Food" value="3000">
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -63,7 +63,7 @@
                     </section>
 
                     <section class="d-grid gap-2 col-6 mx-auto my-5">
-                        <button class="btn btn-primary" type="button">Calculate</button>
+                        <button class="btn btn-primary" type="button" id="calculate">Calculate</button>
                     </section>
 
                     <section class="expenseStatus text-center">
@@ -95,7 +95,30 @@
         </div>
     </main>
 
+    <script>
+        let input4IncomeTag = document.getElementById('input4Income');
 
+        let input4FoodTag = document.getElementById('input4Food');
+        let input4RentTag = document.getElementById('input4Rent');
+        let input4ClothesTag = document.getElementById('input4Clothes');
+
+        let calculateBtn = document.getElementById('calculate');
+
+        let totalExpensesTag = document.getElementById('totalExpenses');
+        let balance1Tag = document.getElementById('balance1');
+
+
+        calculateBtn.addEventListener("click", function () {
+            let foodCost = parseFloat(input4FoodTag.value);
+            let rentCost = parseFloat(input4RentTag.value);
+            let clothesCost = parseFloat(input4ClothesTag.value);
+
+            let totalCosts = foodCost + rentCost + clothesCost;
+            totalExpensesTag.innerHTML = totalCosts;
+            // console.log(totalExpensesTag.innerHTML);
+        })
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
