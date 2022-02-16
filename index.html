@@ -76,11 +76,11 @@
                         <div class="mb-3 row align-items-center justify-content-center">
                             <label for="input4Save" class="col-sm-2 col-form-label me-2 fw-bold">Save</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="input4Income" value="20">
+                                <input type="text" class="form-control" id="input4Save" value="20">
                             </div>
                             <div class="col-sm-1 fw-bold">%</div>
                             <div class="col-sm-4 fw-bold">
-                                <button class="btn btn-primary w-100" type="button">Save</button>
+                                <button class="btn btn-primary w-100" type="button" id="saveBtn">Save</button>
                             </div>
                         </div>
 
@@ -109,14 +109,85 @@
 
 
         calculateBtn.addEventListener("click", function () {
+            let totalIncome = parseFloat(input4IncomeTag.value);
+
             let foodCost = parseFloat(input4FoodTag.value);
             let rentCost = parseFloat(input4RentTag.value);
             let clothesCost = parseFloat(input4ClothesTag.value);
 
             let totalCosts = foodCost + rentCost + clothesCost;
-            totalExpensesTag.innerHTML = totalCosts;
-            // console.log(totalExpensesTag.innerHTML);
+
+            if (input4FoodTag.value >= 0 && input4RentTag.value >= 0 && input4ClothesTag.value >= 0) {
+                if (totalCosts <= totalIncome) {
+
+                    totalExpensesTag.innerHTML = totalCosts.toFixed(2);
+                    balance1Tag.innerHTML = (totalIncome - totalCosts).toFixed(2);
+                } else {
+                    totalExpensesTag.style.color = "red";
+                    balance1Tag.style.color = "red";
+
+                    totalExpensesTag.innerHTML = "Invalid Input";
+                    balance1Tag.innerHTML = "Invalid Input";
+                }
+
+
+
+            } else {
+                totalExpensesTag.style.color = "red";
+                balance1Tag.style.color = "red";
+
+                totalExpensesTag.innerHTML = "Invalid Input";
+                balance1Tag.innerHTML = "Invalid Input";
+            }
+
+            input4IncomeTag.value = '';
+            input4FoodTag.value = '';
+            input4RentTag.value = '';
+            input4ClothesTag.value = '';
+
         })
+
+
+        let input4SaveTag = document.getElementById('input4Save');
+
+        let saveBtn = document.getElementById('saveBtn');
+
+
+        let ultimateSavingsTag = document.getElementById('ultimateSavings');
+        let ultimateBalanceTag = document.getElementById('ultimateBalance');
+
+        saveBtn.addEventListener('click', function () {
+            let totalIncome = parseFloat(input4IncomeTag.value);
+
+
+            let savingPercetnage = parseFloat(input4SaveTag.value);
+            let savingAmmount = totalIncome * (savingPercetnage / 100);
+
+
+            // console.log(totalIncome);
+
+            if (savingAmmount <= balance1Tag.innerHTML && savingAmmount >= 0) {
+                ultimateSavingsTag.innerHTML = savingAmmount.toFixed(2);
+
+                ultimateBalanceTag.innerHTML = (balance1Tag.innerHTML - savingAmmount).toFixed(2);
+
+            } else {
+                ultimateSavingsTag.style.color = "red";
+                ultimateBalanceTag.style.color = "red";
+
+                ultimateSavingsTag.innerHTML = "Invalid Input";
+                ultimateBalanceTag.innerHTML = "Invalid Input";
+            }
+
+            input4SaveTag.value = '';
+
+
+        })
+
+
+
+
+
 
     </script>
 
