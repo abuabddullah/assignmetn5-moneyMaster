@@ -40,16 +40,17 @@ calculateBtn.addEventListener("click", function () {
 
             totalExpensesTag.innerHTML = totalCosts.toFixed(2);
             balance1Tag.innerHTML = (totalIncome - totalCosts).toFixed(2);
+
+            // zeroing the fields
+            input4FoodTag.value = 0;
+            input4RentTag.value = 0;
+            input4ClothesTag.value = 0;
         } else {
             showError(totalExpensesTag, balance1Tag, false)
         }
     } else {
         showError(totalExpensesTag, balance1Tag, false)
     }
-
-    input4FoodTag.value = 0;
-    input4RentTag.value = 0;
-    input4ClothesTag.value = 0;
 })
 
 
@@ -73,12 +74,13 @@ saveBtn.addEventListener('click', function () {
         ultimateSavingsTag.innerHTML = savingAmmount.toFixed(2);
 
         ultimateBalanceTag.innerHTML = (balance1Tag.innerHTML - savingAmmount).toFixed(2);
+
+        // zeroing the fields
+        input4IncomeTag.value = 0;
+        input4SaveTag.value = 0;
     } else {
         showError(ultimateSavingsTag, ultimateBalanceTag, true)
     }
-
-    input4IncomeTag.value = 0;
-    input4SaveTag.value = 0;
 })
 
 
