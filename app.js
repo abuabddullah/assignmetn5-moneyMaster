@@ -1,23 +1,37 @@
+// function to get var for id mentioned in html
+function getId4TagVar(id) {
+    let tagVar = document.getElementById(id);
+    return tagVar;
+}
+
+
 // necessearay variables for calculate
-let input4IncomeTag = document.getElementById('input4Income');
+let input4IncomeTag = getId4TagVar("input4Income");
 
-let input4FoodTag = document.getElementById('input4Food');
-let input4RentTag = document.getElementById('input4Rent');
-let input4ClothesTag = document.getElementById('input4Clothes');
+let input4FoodTag = getId4TagVar("input4Food");
+let input4RentTag = getId4TagVar("input4Rent");
+let input4ClothesTag = getId4TagVar("input4Clothes");
 
-let calculateBtn = document.getElementById('calculate');
+let calculateBtn = getId4TagVar("calculate");
 
-let totalExpensesTag = document.getElementById('totalExpenses');
-let balance1Tag = document.getElementById('balance1');
+let totalExpensesTag = getId4TagVar("totalExpenses");
+let balance1Tag = getId4TagVar("balance1");
+
+
+// function to get value for var mentioned for id
+function getTagValue(tagName) {
+    let tagValue = parseFloat(tagName.value);
+    return tagValue;
+}
 
 
 // function to calculate
 calculateBtn.addEventListener("click", function () {
-    let totalIncome = parseFloat(input4IncomeTag.value);
+    let totalIncome = getTagValue(input4IncomeTag)
 
-    let foodCost = parseFloat(input4FoodTag.value);
-    let rentCost = parseFloat(input4RentTag.value);
-    let clothesCost = parseFloat(input4ClothesTag.value);
+    let foodCost = getTagValue(input4FoodTag);
+    let rentCost = getTagValue(input4RentTag);
+    let clothesCost = getTagValue(input4ClothesTag);
 
     let totalCosts = foodCost + rentCost + clothesCost;
 
@@ -36,47 +50,35 @@ calculateBtn.addEventListener("click", function () {
     input4FoodTag.value = '';
     input4RentTag.value = '';
     input4ClothesTag.value = '';
-
 })
 
 
-
-
-
-
-
 // necessery variables for savings
-let input4SaveTag = document.getElementById('input4Save');
+let input4SaveTag = getId4TagVar('input4Save');
 
-let saveBtn = document.getElementById('saveBtn');
+let saveBtn = getId4TagVar('saveBtn');
 
-
-let ultimateSavingsTag = document.getElementById('ultimateSavings');
-let ultimateBalanceTag = document.getElementById('ultimateBalance');
+let ultimateSavingsTag = getId4TagVar('ultimateSavings');
+let ultimateBalanceTag = getId4TagVar('ultimateBalance');
 
 
 // function for savings
 saveBtn.addEventListener('click', function () {
-    let totalIncome = parseFloat(input4IncomeTag.value);
+    let totalIncome = getTagValue(input4IncomeTag);
 
-
-    let savingPercetnage = parseFloat(input4SaveTag.value);
+    let savingPercetnage = getTagValue(input4SaveTag);
     let savingAmmount = totalIncome * (savingPercetnage / 100);
-
 
     if (savingAmmount <= balance1Tag.innerHTML && savingAmmount >= 0) {
         ultimateSavingsTag.innerHTML = savingAmmount.toFixed(2);
 
         ultimateBalanceTag.innerHTML = (balance1Tag.innerHTML - savingAmmount).toFixed(2);
-
     } else {
         showError(ultimateSavingsTag, ultimateBalanceTag, true)
     }
 
     input4IncomeTag.value = '';
     input4SaveTag.value = '';
-
-
 })
 
 
