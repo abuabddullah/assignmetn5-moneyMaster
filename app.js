@@ -47,9 +47,9 @@ calculateBtn.addEventListener("click", function () {
         showError(totalExpensesTag, balance1Tag, false)
     }
 
-    input4FoodTag.value = '';
-    input4RentTag.value = '';
-    input4ClothesTag.value = '';
+    input4FoodTag.value = 0;
+    input4RentTag.value = 0;
+    input4ClothesTag.value = 0;
 })
 
 
@@ -77,8 +77,8 @@ saveBtn.addEventListener('click', function () {
         showError(ultimateSavingsTag, ultimateBalanceTag, true)
     }
 
-    input4IncomeTag.value = '';
-    input4SaveTag.value = '';
+    input4IncomeTag.value = 0;
+    input4SaveTag.value = 0;
 })
 
 
