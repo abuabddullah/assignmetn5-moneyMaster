@@ -86,16 +86,6 @@ saveBtn.addEventListener('click', function () {
         ultimateSavingsTag.innerHTML = savingAmmount.toFixed(2);
 
         ultimateBalanceTag.innerHTML = (balance1Tag.innerHTML - savingAmmount).toFixed(2);
-
-
-        // zeroing the fields
-        input4IncomeTag.value = '';
-
-        input4FoodTag.value = '';
-        input4RentTag.value = '';
-        input4ClothesTag.value = '';
-
-        input4SaveTag.value = '';
     } else {
         showError(ultimateSavingsTag, ultimateBalanceTag, true)
     }
