@@ -24,9 +24,21 @@ function getTagValue(tagName) {
     return tagValue;
 }
 
+// zeroing empty fields
+function zeroFields() {
+    for (const argument of arguments) {
+        if (argument.value == '') {
+            argument.value = 0;
+        }
+    }
+}
 
 // function to calculate
 calculateBtn.addEventListener("click", function () {
+
+    // test empty fields and put 0 if empty
+    zeroFields(input4IncomeTag, input4FoodTag, input4RentTag, input4ClothesTag);
+
     let totalIncome = getTagValue(input4IncomeTag)
 
     let foodCost = getTagValue(input4FoodTag);
@@ -40,17 +52,13 @@ calculateBtn.addEventListener("click", function () {
 
             totalExpensesTag.innerHTML = totalCosts.toFixed(2);
             balance1Tag.innerHTML = (totalIncome - totalCosts).toFixed(2);
-
-            // zeroing the fields
-            input4FoodTag.value = 0;
-            input4RentTag.value = 0;
-            input4ClothesTag.value = 0;
         } else {
             showError(totalExpensesTag, balance1Tag, false)
         }
     } else {
         showError(totalExpensesTag, balance1Tag, false)
     }
+
 })
 
 
@@ -65,6 +73,10 @@ let ultimateBalanceTag = getId4TagVar('ultimateBalance');
 
 // function for savings
 saveBtn.addEventListener('click', function () {
+
+    // test empty fields and put 0 if empty
+    zeroFields(input4IncomeTag, input4SaveTag);
+
     let totalIncome = getTagValue(input4IncomeTag);
 
     let savingPercetnage = getTagValue(input4SaveTag);
@@ -75,21 +87,20 @@ saveBtn.addEventListener('click', function () {
 
         ultimateBalanceTag.innerHTML = (balance1Tag.innerHTML - savingAmmount).toFixed(2);
 
+
         // zeroing the fields
-        input4IncomeTag.value = 0;
-        input4SaveTag.value = 0;
+        input4IncomeTag.value = '';
+
+        input4FoodTag.value = '';
+        input4RentTag.value = '';
+        input4ClothesTag.value = '';
+
+        input4SaveTag.value = '';
     } else {
         showError(ultimateSavingsTag, ultimateBalanceTag, true)
     }
+
 })
-
-
-
-
-
-
-
-
 
 
 // error handleing function
